@@ -5,7 +5,7 @@
 #         self.next = None
 
 # This answer is the insertion sort solution
-# But the judger can not pass this solution
+# But the judger can not pass this solution, getting TLE
 import math
 
 class Solution(object):
