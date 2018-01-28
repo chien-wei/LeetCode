@@ -4,19 +4,13 @@ class Solution:
         :type arr: List[int]
         :rtype: int
         """
+        # becuse the number in the array is distinct and range from [0, arr.length-1]
+        # if the current _max from number n is found at index i, that mean we can build a chuck
         result = 0
-        p = -1
+        max_ = 0
         for i, n in enumerate(arr):
-            if i < p:
-                p = max(p, n+1)
-            elif (i == n): result += 1
-            else:
-                p = i
-                next = n
-                while next != i:
-                    p = max(p, next+1)
-                    next = arr[next]
+            if n >= max_:
+                max_ = n
+            if i == max_:
                 result += 1
-                
-            
         return result
