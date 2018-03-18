@@ -5,7 +5,7 @@ class Solution(object):
         :rtype: int
         """
         def subseq(w1, w2):
-            #True iff word1 is a subsequence of word2.
+            #True if word1 is a subsequence of word2.
             i = 0
             for c in w2:
                 if i < len(w1) and w1[i] == c:
@@ -18,6 +18,3 @@ class Solution(object):
                     for j, word2 in enumerate(strs) if i != j):
                 return len(word1)
         return -1
-
-S = Solution()
-print S.findLUSlength(["aabbcc", "aabbcc","cb","abc"])
