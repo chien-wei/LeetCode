@@ -21,7 +21,7 @@
 #                     if i != cand[0]: result.append([cand[0], i])
 #         return result
 
-# Butter: use hash to reduce one iteration
+# Better: use hash to reduce one iteration
 
 class Solution:
     def palindromePairs(self, words):
