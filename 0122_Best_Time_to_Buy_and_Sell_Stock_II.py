@@ -1,4 +1,4 @@
-# first draft: TLE
+# first draft: TLE O(n^n)
 class Solution:
     def maxProfit(self, prices):
         """
@@ -52,5 +52,5 @@ class Solution:
             if prices[i+1] > prices[i]:
                 total += prices[i+1] - prices[i]
         return total
-        
+
 
