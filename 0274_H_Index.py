@@ -18,3 +18,20 @@ class Solution:
             if l[i] >= i:
                 return i
         return 0
+
+# 2019/02/05 update
+class Solution:
+    def hIndex(self, citations: 'List[int]') -> 'int':
+        if len(citations) == 0:
+            return 0
+        citations.sort()
+        N = len(citations)-1
+        i = 0
+        for c in citations:
+            #print(i, citations[N-i])
+            if i+1 > citations[N-i]:
+                return i
+            i += 1
+        if i == len(citations):
+            return i
+        return 0
