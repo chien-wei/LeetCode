@@ -23,3 +23,6 @@ class Solution:
                 
         traversal(root, infix)
         return infix[k-1]
+
+# Follow up: What if the BST change often?
+# We could add the count number for each node.
