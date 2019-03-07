@@ -23,3 +23,24 @@ class Solution:
                 ans = max(ans, self.count)
                 self.count = 0
         return ans
+
+# 2019/03/06 update:
+class Solution:
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        M, N = len(grid), len(grid[0])
+        visited = [[False for _ in range(N)] for _ in range(M)]
+        
+        def dfs(i, j):
+            visited[i][j] = True
+            res = 1
+            for (x, y) in [(i+1, j), (i, j+1), (i-1, j), (i, j-1)]:
+                if x >= 0 and x < M and y >= 0 and y < N and not visited[x][y] and grid[x][y] == 1:
+                    res += dfs(x, y)
+            return res
+            
+        res = 0
+        for i in range(M):
+            for j in range(N):
+                if grid[i][j] == 1 and not visited[i][j]:
+                    res = max(res, dfs(i, j))
+        return res
