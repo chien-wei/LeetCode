@@ -20,3 +20,28 @@ class Solution:
             else:
                 ans.append(i)
         return ans
+
+
+# 2019/03/06 update: 
+class Solution:
+    def merge(self, intervals: List[Interval]) -> List[Interval]:
+        tuple_for_sort = [(interval.start, interval.end, i, interval) for i, interval in enumerate(intervals)]
+        tuple_for_sort.sort()
+        sorted_intervals = list(map(lambda tuple2: tuple2[3], tuple_for_sort))
+        
+        res = []
+        start, end = None, None
+        for interval in sorted_intervals:
+            if start == None:
+                start = interval.start
+                end = interval.end
+                continue
+            if interval.start > end:
+                res.append([start, end])
+                start = interval.start
+                end = interval.end
+            elif interval.start <= end:
+                end = max(end, interval.end)
+        if start != None:
+            res.append([start, end])
+        return res
