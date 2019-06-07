@@ -57,3 +57,26 @@ class Solution:
             result[i] = " ".join(result[i])
         return result
                 
+# Need to know that backtrack is not working for this question.
+# DFS + memo: Accepted
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+        
+        def dfs(s, wordDict, memo):
+            if s in memo:
+                return memo[s]
+            if s == "":
+                return [""]
+            res = []
+            
+            for word in wordDict:
+                if s.startswith(word):
+                    tail = dfs(s[len(word):], wordDict, memo)
+                    for t in tail:
+                        res.append(word + t if t == "" else word + " " + t)
+            
+            memo[s] = res
+            return res
+                    
+        
+        return dfs(s, wordDict, {})
