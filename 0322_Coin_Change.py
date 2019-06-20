@@ -1,18 +1,10 @@
-class Solution(object):
-    def coinChange(self, coins, amount):
-        """
-        :type coins: List[int]
-        :type amount: int
-        :rtype: int
-        """
-        
-        dp = [0 for _ in range(amount+1)]
-        for i in range(1, amount+1):
-            cand = []
-            for j in coins:
-                if i - j < 0:
-                    cand.append(float('inf'))
-                else:
-                    cand.append(dp[i-j])
-            dp[i] = min(cand) + 1
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        dp = [float('inf') for _ in range(amount + 1)]
+        dp[0] = 0
+        for i in range(1, amount + 1):
+            for c in coins:
+                if i - c >= 0:
+                    dp[i] = min(dp[i], dp[i-c] + 1)
+                    
         return dp[amount] if dp[amount] != float('inf') else -1
